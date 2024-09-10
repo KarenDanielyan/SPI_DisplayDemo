@@ -1,11 +1,22 @@
+import socket
 from lib import driver
 from time import sleep
 from PIL import Image, ImageDraw
 
-# def getIPaddress
 def getIPAddress():
-    return 'default'
-
+    ip = 'default'
+    test_server = "google.com"
+    port = 80
+    sck = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sck.settimeout(10)
+    try:
+        sck.connect((test_server, port))
+        ip = sck.getsockname()[0]
+    except socket.error:
+        ip = 'No connect to the network'
+    finally:
+        sck.close()
+    return (ip)
 
 def main():
     display = driver.OLED_0in95_rgb()
