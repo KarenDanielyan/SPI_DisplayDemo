@@ -1,0 +1,6 @@
+Pillow
+smbus
+spidev
+lgpio
+Rpi.GPIO
+gpiozero
