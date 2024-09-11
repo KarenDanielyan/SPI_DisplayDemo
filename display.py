@@ -13,7 +13,7 @@ def getIPAddress():
         sck.connect((test_server, port))
         ip = sck.getsockname()[0]
     except socket.error:
-        ip = 'No connect to the network'
+        ip = 'No connection to the network'
     finally:
         sck.close()
     return (ip)
@@ -24,7 +24,6 @@ def main():
     canvas = ImageDraw.Draw(img)
     ip = 'default'
 
-    print("Initializing the display")
     display.Init()
     display.clear()
     canvas.text((0,0), 'Current IP address:', fill = "GREEN")
@@ -32,6 +31,6 @@ def main():
         ip = getIPAddress()
         canvas.text((0, 20), ip, fill="WHITE")
         display.ShowImage(display.getbuffer(img))
-        sleep(100)
+        sleep(90)
 
 main()
